@@ -1,0 +1,402 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package guiproject;
+
+/**
+ *
+ * @author KOT
+ */
+import java.awt.*; 
+import java.awt.* ;
+import javax.swing.*; 
+import java.awt.Color; 
+import java.awt.BorderLayout; 
+import java.awt.GridLayout; 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javafx.scene.control.Button;
+import javax.swing.BorderFactory; 
+import javax.swing.JButton; 
+import javax.swing.JFrame; 
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JPanel; 
+import javax.swing.JTextArea; 
+import javax.swing.JTextField;
+/**
+ *
+ * @author KOT
+ */
+public class GuiProject extends JFrame{
+ private static final long serialVersionUID = 123L; 
+  
+    public static void main(String[] args) {
+         new GuiProject();
+    }
+    GuiProject(){
+         setDefaultCloseOperation(EXIT_ON_CLOSE); 
+         setContentPane(new MainPanel()); 
+         pack(); 
+         setLocationRelativeTo(null); 
+         setVisible(true);
+         setSize(560,150);
+          
+   }
+    
+        
+}
+
+class MainPanel extends JPanel{
+    
+     MainPanel(){
+         
+        JPanel[] panels = new JPanel[6]; 
+        for (int i = 0; i < panels.length; i++) 
+            panels[i] = new JPanel(); 
+
+        JButton[] btnset1 = new JButton[6];
+        
+         
+         
+        for (int i = 0; i < btnset1.length; i++){
+            btnset1[i]=  new JButton("OPEN "+(i+1));           
+            panels[0].add(btnset1[i]);
+             
+            if(i == 0){
+             btnset1[i].addActionListener(open1);
+            }else if(i == 1){
+                 btnset1[i].addActionListener(open2);       
+            }else if(i == 2){       
+                btnset1[i].addActionListener(open3);      
+            }else if(i == 3){     
+             btnset1[i].addActionListener(open4);       
+            }  else if(i == 4){     
+             btnset1[i].addActionListener(open5);
+            }  else if(i == 5){       
+             btnset1[i].addActionListener(open6);
+            }      
+        
+        
+        
+        }
+        
+        
+        
+        panels[5].add(panels[0]);
+        
+        panels[5].setBorder( 
+              BorderFactory.createCompoundBorder(  
+                      BorderFactory.createTitledBorder("SIX BUTTONS"), 
+                      BorderFactory.createEmptyBorder(15,10,15,10) 
+                              ) 
+                      );
+        
+        add(panels[5], BorderLayout.CENTER);
+     
+     }
+     
+       ActionListener  open1= new ActionListener() { 
+          @Override 
+          public void actionPerformed(ActionEvent e) {               
+                new FirstFrame();
+          } 
+      };
+       
+      ActionListener open2= new ActionListener() { 
+          @Override 
+          public void actionPerformed(ActionEvent e) {               
+                new SecondFrame();
+          } 
+      };
+        ActionListener open3= new ActionListener() { 
+          @Override 
+          public void actionPerformed(ActionEvent e) {               
+                new ThirdFrame();
+          } 
+      };
+          ActionListener open4= new ActionListener() { 
+          @Override 
+          public void actionPerformed(ActionEvent e) {               
+              new FourthFrame();
+          } 
+      };
+            ActionListener open5= new ActionListener() { 
+          @Override 
+          public void actionPerformed(ActionEvent e) {               
+                new FifthFrame();
+          } 
+      };
+              ActionListener open6= new ActionListener() { 
+          @Override 
+          public void actionPerformed(ActionEvent e) {               
+                new SixFrame();
+          } 
+      };
+      
+     
+            
+}
+
+//FIRST 
+
+class FirstFrame extends JFrame{
+      FirstFrame(){ 
+          
+         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);         
+         setContentPane(new FirstPanel()); 
+         pack();       
+         setLocationRelativeTo(null);         
+         
+         setVisible(true);
+         revalidate();
+         repaint();   
+         setResizable(false);
+       }
+}
+
+class FirstPanel extends JPanel{
+    FirstPanel(){
+         setLayout(new BorderLayout());
+          JPanel topPanel = new JPanel();
+          JPanel botleftPanel = new JPanel();
+          JPanel botrightPanel = new JPanel();
+                    
+          JTextField[] txt = new JTextField[3];
+          for (int i = 0; i < txt.length; i++) { 
+              txt[i]=new JTextField(11);
+              txt[i].setText("JTextField no "+(i+1));
+              topPanel.add(txt[i]);
+          } 
+          
+          TextArea texta = new TextArea("TextArea1", 9 , 22 , TextArea.SCROLLBARS_NONE);
+          
+          topPanel.setLayout(new GridLayout(3,1));
+                  
+          botrightPanel.setLayout(new GridLayout(3,3));
+          int c = 1;
+          for(int i = 0;i<3;i++){
+              
+              for(int k = 0;k<3;k++){
+                  botrightPanel.add(new JButton ("Button "+c )); 
+               c++;
+              }
+              
+            
+          }
+           
+          botleftPanel.add(texta);
+          add(topPanel,BorderLayout.NORTH);
+          add(botleftPanel,BorderLayout.WEST);
+          add(botrightPanel,BorderLayout.EAST);
+          
+    }
+}
+
+//SECOND 
+
+class SecondFrame extends JFrame{
+      
+       SecondFrame(){
+         
+        
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+            setContentPane(new SecondPanel()); 
+            pack();
+
+            setLocationRelativeTo(null);         
+            setSize(650,190);        
+            setVisible(true);
+            revalidate();
+            repaint();
+            setResizable(false);
+       }
+       
+}
+  
+class SecondPanel extends JPanel{
+    
+   SecondPanel(){
+         setLayout(new BorderLayout());
+          JPanel topleft = new JPanel();
+          JPanel center = new JPanel();
+          JPanel topright = new JPanel();
+          JPanel bot = new JPanel();
+          
+                   
+          TextArea texta1 = new TextArea("TextArea1", 9 , 22 , TextArea.SCROLLBARS_NONE);         
+          TextArea texta2 = new TextArea("TextArea2", 9 , 22 , TextArea.SCROLLBARS_NONE);
+          TextField tf = new TextField("TextField4");
+          topleft.add(texta1);
+          topright.add(texta2);
+          
+          center.setLayout(new GridLayout(4,3));
+          
+          int c = 1;
+          for(int i = 0;i<4;i++){
+              
+              for(int k = 0;k<3;k++){
+                  center.add(new JButton ("Button "+c )); 
+               c++;
+              }
+              
+            
+          }
+          bot.setLayout(new GridLayout(1,1));
+          bot.add(tf);
+          
+          add(topleft,BorderLayout.WEST);
+          add(center,BorderLayout.CENTER);
+          add(topright,BorderLayout.EAST);
+          add(bot,BorderLayout.SOUTH);
+    }
+
+}
+
+class ThirdFrame extends JFrame{
+      
+       ThirdFrame(){
+         
+        
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+            setContentPane(new ThirdPanel()); 
+            pack();
+
+            setLocationRelativeTo(null);         
+            setSize(590,190);        
+            setVisible(true);
+            revalidate();
+            repaint();
+             
+       }
+       
+}
+  
+class ThirdPanel extends JPanel{
+    
+   ThirdPanel(){
+          setLayout(new BorderLayout());
+          JPanel top  = new JPanel();
+          JPanel left = new JPanel();
+          JPanel center = new JPanel();
+          JPanel right = new JPanel();
+       
+          top.setLayout(new GridLayout(1,1));
+          TextArea texta = new TextArea("TextArea1", 3 , 10 , TextArea.SCROLLBARS_NONE);        
+          
+          top.add(texta);
+          
+          left.setLayout(new GridLayout(2,2));
+          right.setLayout(new GridLayout(2,2));
+          JButton[] jb = new JButton[8];
+          for(int i = 0;i<jb.length;i++){
+              jb[i]=new JButton(String.format("B%02d",i+1));
+              if(i< 4){
+                  left.add(jb[i]);
+              }else{
+                  right.add(jb[i]);
+              }
+          }
+          TextField tf1 = new TextField("TextField1");
+          TextField tf2 = new TextField("TextField2");
+          TextField tf3 = new TextField("TextField3");
+          
+          center.setLayout(new GridLayout(3,1));
+          center.add(tf1);
+          center.add(tf2);
+          center.add(tf3);
+           
+          add(top,BorderLayout.NORTH);
+          add(left,BorderLayout.WEST);
+          add(center,BorderLayout.CENTER);
+          add(right,BorderLayout.EAST);
+    }
+
+}
+class FourthFrame extends JFrame{
+      
+       FourthFrame(){
+         
+        
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+            setContentPane(new FourthPanel()); 
+            pack();
+
+            setLocationRelativeTo(null);         
+            setSize(650,190);        
+            setVisible(true);
+            revalidate();
+            repaint();
+            setResizable(false);
+       }
+       
+}
+  
+class FourthPanel extends JPanel{
+    
+   FourthPanel(){
+         
+    }
+
+}
+class FifthFrame extends JFrame{
+      
+       FifthFrame(){
+         
+        
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+            setContentPane(new FifthPanel()); 
+            pack();
+
+            setLocationRelativeTo(null);         
+            setSize(650,190);        
+            setVisible(true);
+            revalidate();
+            repaint();
+            setResizable(false);
+       }
+       
+}
+  
+class FifthPanel extends JPanel{
+    
+   FifthPanel(){
+        
+    }
+
+}
+class SixFrame extends JFrame{
+      
+       SixFrame(){
+         
+        
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+            setContentPane(new SixPanel()); 
+            pack();
+
+            setLocationRelativeTo(null);         
+            setSize(650,190);        
+            setVisible(true);
+            revalidate();
+            repaint();
+            setResizable(false);
+       }
+       
+}
+  
+class SixPanel extends JPanel{
+    
+   SixPanel(){
+         
+    }
+
+}
+ 
+
+

@@ -1,0 +1,4 @@
+Kuba 1995
+John 1980 Mercedes 255 255 102
+Mary 1997
+Alice 1993 Skoda 0 127 153
